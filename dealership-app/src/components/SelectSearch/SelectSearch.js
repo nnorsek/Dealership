@@ -1,21 +1,15 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SelectSearchStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDown,
-  faChevronDown,
-  faCircle,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
 import DropDown from "../DropDownSearchBar/DropDownSearchBar";
-
-// TODO -> Change to custom select components using framer for animation on arrows.
+import { useNavigate } from "react-router-dom";
 
 const SelectSearch = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [resetCounter, setResetCounter] = useState(0);
+  const navigate = useNavigate();
   const [filters, setFilters] = useState({
     make: [],
     model: [],
@@ -95,19 +89,18 @@ const SelectSearch = () => {
     e.preventDefault();
     console.log(`Submitting Filters: ${JSON.stringify(filters)}`);
 
-    //Submit Search Logic Here
-    //Routes to page of cars
+    navigate(`/carlist`, { state: { value: selectedFilters } });
   };
 
   const resetFilters = () => {
     console.log("reset filters");
 
     setSelectedFilters({
-      make: "",
-      mode: "",
-      car_condition: "",
-      year: "",
-      price: "",
+      make: null,
+      model: null,
+      car_condition: null,
+      year: null,
+      price: null,
     });
 
     setFilteredCars(cars);
@@ -181,10 +174,10 @@ const SelectSearch = () => {
               style={{ pointerEvents: "none", fontSize: "medium" }}
             />
           </button>
+          <button className="reset-filters" onClick={resetFilters}>
+            Reset Filters
+          </button>
         </div>
-        <button className="reset-filters" onClick={resetFilters}>
-          Reset Filters
-        </button>
       </div>
     </div>
   );

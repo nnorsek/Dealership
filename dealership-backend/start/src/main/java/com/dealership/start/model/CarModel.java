@@ -1,17 +1,21 @@
 package com.dealership.start.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
-@Table(name="car_model")
 public class CarModel {
 
 
@@ -22,6 +26,27 @@ public class CarModel {
     public Long getId() {
         return id;
     }
+
+
+    private String model;
+    private String make;
+    private int year;
+
+    @Column(name="car_condition")
+    @JsonProperty("car_condition")
+    private String carCondition;
+    
+    private float price;
+
+    private String vin;
+    private String stock;
+    private int miles;
+    private String color;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id")
+    private List<ImageModel> images;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -55,15 +80,37 @@ public class CarModel {
     public void setPrice(float price) {
         this.price = price;
     }
-    private String model;
-    private String make;
-    private int year;
 
-    @Column(name="car_condition")
-    @JsonProperty("car_condition")
-    private String carCondition;
-
-    private float price;
+    public String getVin() {
+        return vin;
+    }
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+    public String getStock() {
+        return stock;
+    }
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+    public int getMiles() {
+        return miles;
+    }
+    public void setMiles(int miles) {
+        this.miles = miles;
+    }
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public List<ImageModel> getImages() {
+        return images;
+    }
+    public void setImages(List<ImageModel> images) {
+        this.images = images;
+    }
 
     
     

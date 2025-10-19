@@ -25,4 +25,8 @@ public class CarModelService {
     public List<CarModel> getAllCars(){
         return carModelRepository.findAll();
     }
+
+    public List<CarModel> getAllCarsByFilter(String model, String make, String carCondition, Integer year, Float price){
+        return carModelRepository.findByFilters(model, make, carCondition, year, price);
+    }
 }

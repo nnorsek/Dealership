@@ -1,14 +1,11 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import HomePage from "./home/HomePage";
 
-function App() {
+function App({ children }) {
   return (
     <div className="App">
       <Navbar />
-      <div className="homeSection">
-        <HomePage />
-      </div>
+      <div className="homeSection">{children}</div>
     </div>
   );
 }

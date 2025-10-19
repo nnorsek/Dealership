@@ -9,10 +9,11 @@ const DropDown = ({ buttonText, items = [], onSelect, resetTrigger }) => {
   const dropdownRef = useRef(null);
 
   const handleItemClick = (item) => {
+    const value = item == buttonText ? null : item;
     setSelectedOption(item);
     setIsOpen(false);
     if (onSelect) {
-      onSelect(item);
+      onSelect(value);
     }
   };
 
@@ -32,11 +33,11 @@ const DropDown = ({ buttonText, items = [], onSelect, resetTrigger }) => {
   }, [dropdownRef]);
 
   useEffect(() => {
-    setSelectedOption("");
+    setSelectedOption(buttonText);
   }, [resetTrigger]);
 
   return (
-    <div className="dropdown-container">
+    <div className="dropdown-container" ref={dropdownRef}>
       <button className="dropdown-button" onClick={toggleDropDown}>
         {selectedOption || buttonText}
       </button>
