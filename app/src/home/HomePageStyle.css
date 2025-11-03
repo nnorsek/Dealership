@@ -1,0 +1,55 @@
+.hero-container {
+  justify-self: center;
+  background-image: url("../images/audi-home.png");
+  background-position: center; /* Centers the image within the container */
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: auto;
+  align-items: center;
+  padding-top: 100px;
+  background-color: rgb(210, 230, 248);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.home-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-text p {
+  font-family: "Poppins", sans-serif;
+}
+
+.home-text h1 {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1.4px;
+  font-size: 54px;
+  font-weight: 600;
+}
+
+.browse-container {
+  background-color: white;
+  margin-top: -340px;
+  z-index: 5;
+  color: black;
+  position: relative;
+  height: 300px;
+}
+
+.browse-by-type {
+  font-family: "Poppins", sans-serif;
+  padding-top: 110px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.typebox {
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  gap: 30px;
+}

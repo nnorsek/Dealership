@@ -1,0 +1,56 @@
+.dropdown-container {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+
+.dropdown-button {
+  border: none;
+  appearance: none;
+  background: white;
+  padding: 1px 70px 1px 1px;
+  cursor: pointer;
+  width: 165px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 30px;
+  background-color: white;
+  width: 190px;
+  max-height: 200px;
+  padding: 5px 0;
+  font-family: "Poppins", sans-serif;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.dropdown-item {
+  color: #333;
+  border-bottom: 1px solid #eee;
+  list-style-type: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  overflow-y: auto;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
