@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", // Or a newer ECMAScript version supported by your Node.js runtime
+    "module": "Node16", // Or "ESNext" for modern module resolution
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Output directory for compiled JavaScript files
+    "rootDir": "./src", // Root directory of your TypeScript source files
+    "lib": ["ES2022"], // Or a newer ECMAScript version
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/**/*.ts"], // Files to include in the compilation
+  "exclude": ["node_modules"] // Files/directories to exclude from the compilation
+}
