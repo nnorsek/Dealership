@@ -1,31 +1,22 @@
-import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 import express from "express";
+import cors from "cors";
+import carRouter from "./routes/car.routes";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-// use cors
-
-const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT } = process.env;
-
-if (!DB_HOST || !DB_USER || !DB_PASSWORD || !DB_NAME || !DB_PORT) {
-  throw new Error("Missing Database credentials.");
-}
-
-export const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: Number(process.env.DB_PORT),
-});
-
+const port = 3000;
 // Routes
 app.get("/", (req, res) => {
   res.send("API running!");
 });
 
-export default app;
+app.use("/car", carRouter);
+
+app.listen(port, () => {
+  console.log(`PORT ${port} is currently running.`);
+});
