@@ -1,9 +1,7 @@
-import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import carRouter from "./routes/car.routes";
-
-dotenv.config();
+import s3Router from "./util/ImageUploader";
 
 const app = express();
 app.use(express.json());
@@ -16,6 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/car", carRouter);
+app.use("/image", s3Router);
 
 app.listen(port, () => {
   console.log(`PORT ${port} is currently running.`);

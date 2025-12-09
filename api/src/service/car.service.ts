@@ -1,14 +1,27 @@
 import { Car } from "../model/car.model";
 import { CarRepository } from "../repository/car.repository";
+import { ConditionEnum } from "../model/condition.emun";
 
 export const CarService = {
-  async getAll(): Promise<Car[] | null> {
-    return await CarRepository.getAllCars();
+  async getAll(filters: any): Promise<Car[] | null> {
+    return await CarRepository.getFilters(filters);
   },
 
   async createCar(car: Car): Promise<number> {
-    const { model, make, price, year, vin, color, condition, miles, stock } =
-      car;
+    const {
+      model,
+      make,
+      price,
+      year,
+      vin,
+      color,
+      condition,
+      miles,
+      stock,
+      image,
+    } = car;
+
+    const validConditions = Object.values(ConditionEnum);
     const required = {
       model,
       make,
@@ -19,6 +32,7 @@ export const CarService = {
       miles,
       stock,
       price,
+      image,
     };
 
     for (const [key, value] of Object.entries(required)) {
@@ -29,6 +43,11 @@ export const CarService = {
     const exists = await CarRepository.findCarByVin(vin);
     if (exists == vin) {
       throw new Error("VIN has to be unique");
+    }
+    console.log("Condition in service: ", condition);
+    console.log("Valid conditions: ", validConditions);
+    if (!validConditions.includes(condition)) {
+      throw new Error("Condition is invalid");
     }
 
     if (!/^[A-HJ-NPR-Z0-9]{17}$/.test(String(vin))) {

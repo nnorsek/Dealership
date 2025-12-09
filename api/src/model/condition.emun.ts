@@ -1,4 +1,4 @@
-export enum condition {
+export enum ConditionEnum {
   USED = "Used",
   NEW = "New",
 }

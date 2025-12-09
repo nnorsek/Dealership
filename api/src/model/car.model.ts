@@ -1,4 +1,4 @@
-import { condition } from "./condition.emun";
+import { ConditionEnum } from "./condition.emun";
 
 export interface Car {
   id: number;
@@ -6,9 +6,10 @@ export interface Car {
   make: string;
   year: number;
   price: number;
-  condition: condition;
+  condition: ConditionEnum;
   color: string;
   miles: number;
   stock: string;
   vin: number;
+  image: string;
 }
